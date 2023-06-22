@@ -24,9 +24,11 @@ requirements:
   host:
     - azure-macro-utils-c <2020.10.29
     - libuuid  # [unix]
+    - openssl <3
     - umock-c
   run:
     - azure-macro-utils-c <2020.10.29
+    - openssl <3
     - umock-c
 
 test:
