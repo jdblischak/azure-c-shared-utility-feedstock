@@ -34,7 +34,7 @@ requirements:
 test:
   commands:
     - if not exist %PREFIX%\\Library\\bin\\aziotsharedutil.dll exit 1  # [win]
-    - test -f "${PREFIX}/lib/libaziotsharedutil.${SHLIB_EXT}"  # [not win]
+    - test -f "${PREFIX}/lib/libaziotsharedutil${SHLIB_EXT}"  # [not win]
 
 about:
   home: https://github.com/Azure/azure-c-shared-utility
