@@ -43,5 +43,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - xylar
+    - jdblischak
+    - jjerphan
     - seanyen
+    - xylar
