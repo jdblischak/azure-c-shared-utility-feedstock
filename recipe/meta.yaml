@@ -22,6 +22,9 @@ requirements:
     - make   # [not win]
     - ninja  # [win]
   host:
+    # 2022.08.09 is the first backward-incompatible version after
+    # azure-macro-utils-c was renamed to macro-utils-c.
+    # See: https://github.com/conda-forge/azure-macro-utils-c-feedstock/commit/abca76cfa9b6738d76e44fb5428559d4f245808c
     - azure-macro-utils-c <2020.10.29
     - libuuid  # [unix]
     - umock-c
