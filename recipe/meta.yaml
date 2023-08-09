@@ -10,26 +10,32 @@ source:
     sha256: 643f3b84ac511b301e481c35278e6a4deacb9e945ad1e36dc3ff4b5f45300b39
 
 build:
-  number: 0
-  skip: true  # [not win64]
+  number: 1
+  skip: true  # [linux]
   run_exports:
-    - {{ pin_subpackage(name, exact=True) }}
+    - {{ pin_subpackage(name, max_pin='x.x.x') }}
 
 requirements:
   build:
-    - vs2017_win-64          # [win64]
+    - {{ compiler('c') }}
     - cmake
-    - ninja
+    - make   # [not win]
+    - ninja  # [win]
   host:
-    - azure-macro-utils-c
+    # 2022.08.09 is the first backward-incompatible version after
+    # azure-macro-utils-c was renamed to macro-utils-c.
+    # See: https://github.com/conda-forge/azure-macro-utils-c-feedstock/commit/abca76cfa9b6738d76e44fb5428559d4f245808c
+    - azure-macro-utils-c <2020.10.29
+    - libuuid  # [unix]
     - umock-c
   run:
-    - azure-macro-utils-c
+    - azure-macro-utils-c <2020.10.29
     - umock-c
 
 test:
   commands:
     - if not exist %PREFIX%\\Library\\bin\\aziotsharedutil.dll exit 1  # [win]
+    - test -f "${PREFIX}/lib/libaziotsharedutil${SHLIB_EXT}"  # [not win]
 
 about:
   home: https://github.com/Azure/azure-c-shared-utility
@@ -40,5 +46,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - xylar
+    - jdblischak
+    - jjerphan
     - seanyen
+    - xylar
