@@ -1,5 +1,5 @@
 {% set name = "azure-c-shared-utility" %}
-{% set version = "2020.01.22" %}
+{% set version = "2020-12-09" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   - url: https://github.com/Azure/azure-c-shared-utility/archive/{{ version.replace('.', '-') }}.tar.gz
-    sha256: 643f3b84ac511b301e481c35278e6a4deacb9e945ad1e36dc3ff4b5f45300b39
+    sha256: 8cf59c75666c4cdffc2f672598668e6ce474c857e1be1ccebeee3edd50cbf69b
 
 build:
-  number: 1
+  number: 0
   skip: true  # [linux]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x.x') }}
