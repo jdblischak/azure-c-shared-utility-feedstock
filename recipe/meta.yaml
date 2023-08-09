@@ -1,5 +1,5 @@
 {% set name = "azure-c-shared-utility" %}
-{% set version = "2020-12-09" %}
+{% set version = "2020.12.09" %}
 
 package:
   name: {{ name }}
